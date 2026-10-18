@@ -1,0 +1,49 @@
+% !TeX root = ../main.tex
+\section{数式・表・グラフ}
+\label{sec:results}
+説明用に，抵抗 \(R=\SI{1.00}{\kilo\ohm}\) に電圧 \(V\) を加えた場合を考える。
+オームの法則より電流 \(I\) は次のように求まる。
+\begin{equation}
+  I = \frac{V}{R}
+  \label{eq:ohm}
+\end{equation}
+式\eqref{eq:ohm}による計算値を表\ref{tab:values}，
+グラフを図\ref{fig:curve}に示す。
+グラフは PGFPlots を用いて文書内で描く\cite{pgfplots}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{説明用の電圧と電流の計算値}
+  \label{tab:values}
+  \begin{tabular}{S[table-format=1.1] @{\hspace{12mm}} S[table-format=1.2]}
+    \toprule
+    {電圧 / \si{\volt}} & {電流 / \si{\milli\ampere}} \\
+    \midrule
+    0.0 & 0.00 \\
+    1.0 & 1.00 \\
+    2.0 & 2.00 \\
+    3.0 & 3.00 \\
+    4.0 & 4.00 \\
+    5.0 & 5.00 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.78\linewidth,height=48mm,
+      xlabel={Voltage / V},ylabel={Current / mA},
+      xmin=0,xmax=5,ymin=0,ymax=5.5,
+      grid=major,
+      tick label style={font=\small},
+      label style={font=\small}
+    ]
+      \addplot[color=accent,thick,mark=*]
+        table[x=voltage,y=current,col sep=comma]{data/ohm.csv};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{抵抗値を一定としたときの電圧と電流の関係}
+  \label{fig:curve}
+\end{figure}

@@ -1,0 +1,52 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{iftex}
+\ifxetex\usepackage{fontspec}\fi
+\ifpdftex\usepackage[T1]{fontenc}\usepackage{lmodern}\fi
+\usepackage{amsmath,booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\title{A Portable LaTeX Project}
+\author{Sample Author}
+\date{18 October 2026}
+\begin{document}
+\maketitle
+\section{One project, one build configuration}
+This independent example uses pdfLaTeX by default. Set the engine to
+\texttt{xelatex} in the local \texttt{.latexmkrc} to build it with XeLaTeX.
+There are no operating-system font names or personal paths in this document.
+Latexmk resolves references and runs BibTeX when required\cite{latexmk}.
+
+\section{Mathematics and cross-references}
+\label{sec:math}
+For a resistor with resistance \(R\), the current is
+\begin{equation}
+  I=\frac{V}{R}.
+  \label{eq:current}
+\end{equation}
+Equation~\eqref{eq:current} and Table~\ref{tab:measurements} are linked to their
+definitions. No reference numbers are entered manually.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Illustrative values, not experimental measurements.}
+  \label{tab:measurements}
+  \begin{tabular}{rr}
+    \toprule
+    Voltage / V & Current / mA \\
+    \midrule
+    1.0 & 1.0 \\
+    2.0 & 2.0 \\
+    3.0 & 3.0 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Building from another folder}
+The helper scripts locate this project relative to their own location.
+The editor recipe resolves paths relative to the root TeX file.
+Consequently, moving the repository does not require editing absolute paths.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

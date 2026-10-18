@@ -1,0 +1,13 @@
+% !TeX root = ../main.tex
+\section{環境をプロジェクトと一緒に管理する}
+ビルドに必要な設定は，ルート文書と同じ場所の
+\path{.latexmkrc} に置く。
+エディターの設定は \path{.vscode/settings.json} で共有し，
+フォントの好みやユーザー名を含むパスに依存させない。
+latexmk は文献や相互参照の状態を確認して，必要な再コンパイルを行う
+\cite{latexmk}。
+
+このサンプルのエンジンは初期状態で upLaTeX である。
+\texttt{.latexmkrc} の \texttt{engine} の値を変更すると，
+pLaTeX または LuaLaTeX でも同じ本文を使える。
+環境によってページの区切りや文字間隔は多少変わる。

@@ -1,0 +1,54 @@
+% SPDX-License-Identifier: MIT
+% Original public sample. This is not the school's r08ec-exp.sty.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{school-report-example}[2026/10/18 Original example report cover]
+\RequirePackage{geometry}
+\geometry{left=20mm,right=20mm,top=25mm,bottom=25mm}
+
+\makeatletter
+\newcommand{\example@grade}{未記入}
+\newcommand{\example@team}{未記入}
+\newcommand{\example@expdate}{未記入}
+\newcommand{\example@coauthors}{未記入}
+\newcommand{\grade}[1]{\renewcommand{\example@grade}{#1}}
+\newcommand{\team}[1]{\renewcommand{\example@team}{#1}}
+\newcommand{\expdate}[1]{\renewcommand{\example@expdate}{#1}}
+\newcommand{\coauthor}[1]{\renewcommand{\example@coauthors}{#1}}
+
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{15mm}
+    {\small LaTeX 使用例\par}
+    \vspace{8mm}
+    {\LARGE\bfseries 実験報告書\par}
+    \vspace{15mm}
+    {\Large\bfseries \@title\par}
+    \vspace{18mm}
+    \begingroup
+      \renewcommand{\arraystretch}{1.8}
+      \begin{tabular}{@{}p{28mm}p{105mm}@{}}
+        報告者 & \example@grade\quad\@author \\
+        提出日 & \@date \\
+        実験日 & \example@expdate \\
+        実験班 & \example@team \\
+        共同実験者 &
+          \begin{tabular}[t]{@{}rl@{}}
+            \example@coauthors
+          \end{tabular}
+      \end{tabular}
+    \endgroup
+    \vfill
+    \begin{minipage}{0.86\textwidth}
+      \small
+      \textbf{公開用の記入例}\par
+      学年・出席番号・実験日・共同実験者を記入する例である。
+      この表紙は公開用に新規作成したものであり，
+      学校が指定する正式な提出用紙ではない。
+      氏名・日付・数値はすべて使用例である。
+    \end{minipage}
+    \vspace*{15mm}
+  \end{titlepage}
+  \setcounter{page}{1}
+}
+\makeatother

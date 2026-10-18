@@ -1,0 +1,50 @@
+% Self-contained example: upLaTeX, pLaTeX or LuaLaTeX.
+\RequirePackage{iftex}
+\ifluatex
+  \documentclass[a4paper,11pt]{ltjsarticle}
+\else
+  \ifptex
+    \RequirePackage{plautopatch}
+    % The platex executable also uses an upTeX binary in modern TeX Live.
+    % Let jsclasses detect the format's internal encoding, not just the binary.
+    \documentclass[autodetect-engine,dvipdfmx,a4paper,11pt,nomag]{jsarticle}
+  \else
+    \errmessage{Use upLaTeX, pLaTeX or LuaLaTeX for main.tex}
+  \fi
+\fi
+
+\ifptex
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+\usepackage[margin=23mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{246A7B}
+\usepackage[colorlinks=true,linkcolor=accent,citecolor=accent,urlcolor=accent]{hyperref}
+\ifptex\usepackage{pxjahyper}\fi
+
+\title{移植できる\LaTeX 環境\\[0.4em]\large 日本語レポートのサンプル}
+\author{サンプル作成者}
+\date{2026年10月18日}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+この文書は，VS Code と latexmk を使う環境の動作確認用サンプルである。
+日本語，数式，表，グラフ，文献引用，分割ファイルの相互参照を一度に確認できる。
+数値は説明用の仮想データであり，実験による測定結果ではない。
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/results}
+\input{sections/discussion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

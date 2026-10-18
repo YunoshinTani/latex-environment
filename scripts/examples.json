@@ -1,0 +1,7 @@
+{
+  "school": { "directory": "00-使用例/01-学校形式-upLaTeX", "main": "実験報告書.tex" },
+  "school-platex": { "directory": "00-使用例/02-学校形式-pLaTeX", "main": "実験報告書.tex" },
+  "report": { "directory": "00-使用例/03-数式とグラフ", "main": "main.tex" },
+  "english": { "directory": "00-使用例/04-欧文", "main": "main.tex" },
+  "bibliography": { "directory": "00-使用例/05-biblatexとBiber", "main": "main.tex" }
+}

@@ -1,0 +1,38 @@
+# Reproducible build products. Keep published previews under docs/samples/.
+**/export/
+/tmp/
+/output/
+
+# Auxiliary files from builds without the project configuration.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.xdv
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Local configuration and editor/OS files.
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.jsonc
+*.local.code-workspace
+.DS_Store
+Thumbs.db
+*~

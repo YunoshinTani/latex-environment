@@ -1,0 +1,78 @@
+name: Build sample PDFs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sample: school
+            directory: 00-使用例/01-学校形式-upLaTeX
+            root_file: 実験報告書.tex
+            pdf_file: 実験報告書.pdf
+            engine: uplatex
+          - sample: school
+            directory: 00-使用例/02-学校形式-pLaTeX
+            root_file: 実験報告書.tex
+            pdf_file: 実験報告書.pdf
+            engine: platex
+          - sample: report
+            directory: 00-使用例/03-数式とグラフ
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: uplatex
+          - sample: report
+            directory: 00-使用例/03-数式とグラフ
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: platex
+          - sample: report
+            directory: 00-使用例/03-数式とグラフ
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: lualatex
+          - sample: english
+            directory: 00-使用例/04-欧文
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: pdflatex
+          - sample: english
+            directory: 00-使用例/04-欧文
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: xelatex
+          - sample: bibliography
+            directory: 00-使用例/05-biblatexとBiber
+            root_file: main.tex
+            pdf_file: main.pdf
+            engine: lualatex
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Compile with the project configuration
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
+        with:
+          texlive_version: '2026'
+          root_file: ${{ matrix.root_file }}
+          working_directory: ${{ matrix.directory }}
+          pre_compile: export LATEX_ENGINE=${{ matrix.engine }}
+          args: -norc -r .latexmkrc
+      - name: Upload PDF
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: ${{ matrix.sample }}-${{ matrix.engine }}
+          path: ${{ matrix.directory }}/export/${{ matrix.pdf_file }}
+          if-no-files-found: error
+          retention-days: 14

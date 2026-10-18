@@ -1,0 +1,28 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=25mm]{geometry}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\title{文献管理のサンプル\\[0.4em]\large LuaLaTeX + biblatex + Biber}
+\author{サンプル作成者}
+\date{2026年10月18日}
+\begin{document}
+\maketitle
+\section{本文から文献を引用する}
+biblatex では，文献データを \texttt{references.bib} にまとめ，
+本文から \verb|\cite| などを使って引用する\cite{biblatex}。
+日本語を含む文献も UTF-8 のまま管理できる。
+例えば，仮想の日本語文献を引用すると，次のようになる\cite{sample-japanese}。
+
+\section{Biberを自動実行する}
+この例は LuaLaTeX を使う。
+latexmk が文献データの状態を見て，Biber と LuaLaTeX を必要な回数だけ実行する。
+エディター側で「LuaLaTeX，Biber，LuaLaTeXを2回」のような固定の手順を組む必要はない。
+
+\section{文献ファイルの最小例}
+日本語文献のデータは，説明のために作成した架空のものである。
+実際のレポートでは，参照した資料の著者・題名・発行年に置き換える。
+
+\printbibliography[title={参考文献}]
+\end{document}

@@ -1,0 +1,79 @@
+% !TEX TS-program = pLaTeX (ptex2pdf)
+% Public example: fictitious names, dates and measurements.
+\RequirePackage{plautopatch}
+\documentclass[platex,dvipdfmx,titlepage,a4j]{jsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[yen]{okuverb}
+\usepackage{school-report-example}
+
+\title{抵抗の電圧と電流の関係}
+\grade{3年00番}
+\author{サンプル 太郎}
+\team{第1班}
+\date{2026年10月18日}
+\expdate{2026年10月15日}
+\coauthor{
+  01番 & サンプル 花子 \\
+  02番 & サンプル 次郎
+}
+
+\begin{document}
+\maketitle
+
+\section{目的}
+抵抗に加える電圧と流れる電流の関係を調べ，
+オームの法則と比較する。
+本書の氏名・日付・数値は使用例であり，実測値ではない。
+
+\section{理論}
+抵抗値を \(R\)，電圧を \(V\)，電流を \(I\) とすると，
+オームの法則は式\eqref{eq:ohm}で表される。
+\begin{equation}
+  I = \frac{V}{R}
+  \label{eq:ohm}
+\end{equation}
+
+\section{実験方法}
+抵抗値を \(1.0\,\mathrm{k\Omega}\) とした回路を考え，
+印加電圧を変えたときの電流を比較する。
+実際のレポートでは，使用器具，回路図，操作手順を記載する。
+
+\section{実験結果}
+説明用の計算値を表\ref{tab:values}に示す。
+表番号は \verb|\label| と \verb|\ref| を使って参照する。
+\begin{table}[htbp]
+  \centering
+  \caption{電圧と電流の計算値（仮想データ）}
+  \label{tab:values}
+  \begin{tabular}{rr}
+    \hline
+    電圧 / \(\mathrm{V}\) & 電流 / \(\mathrm{mA}\) \\
+    \hline
+    1.0 & 1.0 \\
+    2.0 & 2.0 \\
+    3.0 & 3.0 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{考察}
+表\ref{tab:values}では，電圧が2倍になると電流も2倍になり，
+式\eqref{eq:ohm}の比例関係を確認できる。
+実測値を扱う場合は，誤差の大きさとその原因も検討する。
+
+\begin{thebibliography}{9}
+  \bibitem{guide}
+    サンプル著者，「実験レポートの記述例」，2026（架空の資料）．
+\end{thebibliography}
+参考文献欄は記入例である。
+提出時には，実際に参照した資料を記載する。
+
+\section*{感想}
+数式や表を相互参照で記述すると，
+内容を変更した際も番号を自動的に更新できることを確認した。
+
+\end{document}
